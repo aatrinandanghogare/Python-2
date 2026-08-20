@@ -1,0 +1,99 @@
+CREATE TABLE Supplier (
+    supplier_id INT,
+    supplier_name VARCHAR(50),
+    contact VARCHAR(20)
+);
+
+-- Product Table
+CREATE TABLE Product (
+    product_id INT,
+    product_name VARCHAR(50),
+    supplier_id INT,
+    quantity INT,
+    price DECIMAL(10,2)
+);
+
+CREATE TABLE Supply_Log (
+    log_id INT,
+    product_id INT,
+    quantity_supplied INT
+);
+
+
+
+INSERT INTO Supplier VALUES
+(1, 'ABC Suppliers', '9876543210');
+
+INSERT INTO Supplier VALUES
+(2, 'Global Traders', '9876501234');
+
+INSERT INTO Supplier VALUES
+(3, 'Prime Distributors', '9123456780');
+
+
+-- ==========================================
+-- 2. INSERT PRODUCT DATA
+-- ==========================================
+
+INSERT INTO Product VALUES
+(101, 'Laptop', 1, 5, 55000.00);
+
+INSERT INTO Product VALUES
+(102, 'Keyboard', 2, 15, 1200.00);
+
+INSERT INTO Product VALUES
+(103, 'Mouse', 2, 8, 600.00);
+
+INSERT INTO Product VALUES
+(104, 'Monitor', 3, 0, 15000.00);
+
+INSERT INTO Product VALUES
+(105, 'Printer', 1, 2, 12000.00);
+
+
+-- ==========================================
+-- 3. INSERT SUPPLY LOG DATA
+-- ==========================================
+
+INSERT INTO Supply_Log VALUES
+(1, 101, 10);
+
+INSERT INTO Supply_Log VALUES
+(2, 103, 5);
+
+INSERT INTO Supply_Log VALUES
+(3, 104, 20);
+
+INSERT INTO Supply_Log VALUES
+(4, 105, 5);
+
+
+-- ==========================================
+-- 4. UPDATE PRODUCT QUANTITIES
+-- ==========================================
+
+UPDATE Product
+SET quantity = quantity + 10
+WHERE product_id = 101;
+
+UPDATE Product
+SET quantity = quantity + 5
+WHERE product_id = 103;
+
+UPDATE Product
+SET quantity = quantity + 20
+WHERE product_id = 104;
+
+UPDATE Product
+SET quantity = quantity + 5
+WHERE product_id = 105;
+
+
+DELETE FROM Product
+WHERE quantity = 0;
+
+
+
+SELECT product_id, product_name, quantity, price
+FROM Product
+WHERE quantity < 10;
